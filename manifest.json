@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "DarkBili TV - Dark Mode for bilibili.tv",
+  "version": "1.0.0",
+  "description": "Adds a dark mode to bilibili.tv (the international site), with a toggle and brightness/contrast controls.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["https://www.bilibili.tv/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.bilibili.tv/*"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

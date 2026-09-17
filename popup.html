@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>DarkBili TV</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <span class="logo">🌙</span>
+    <h1>DarkBili TV</h1>
+  </header>
+
+  <div class="row">
+    <label for="enabled">Dark mode</label>
+    <label class="switch">
+      <input type="checkbox" id="enabled" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="row slider-row">
+    <label for="contrast">Contrast</label>
+    <input type="range" id="contrast" min="50" max="100" step="1" />
+    <span id="contrast-val" class="val"></span>
+  </div>
+
+  <div class="row slider-row">
+    <label for="brightness">Brightness</label>
+    <input type="range" id="brightness" min="60" max="140" step="1" />
+    <span id="brightness-val" class="val"></span>
+  </div>
+
+  <p class="hint">Works on bilibili.tv. Reload the tab if a page loaded before you installed the extension.</p>
+
+  <script src="popup.js"></script>
+</body>
+</html>
