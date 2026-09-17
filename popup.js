@@ -1,21 +1,17 @@
 const DEFAULTS = {
   enabled: true,
-  contrast: 90,
-  brightness: 100
+  darkness: 50
 };
 
 const enabledEl = document.getElementById("enabled");
-const contrastEl = document.getElementById("contrast");
-const brightnessEl = document.getElementById("brightness");
-const contrastValEl = document.getElementById("contrast-val");
-const brightnessValEl = document.getElementById("brightness-val");
+const darknessEl = document.getElementById("darkness");
+const darknessValEl = document.getElementById("darkness-val");
+const resetEl = document.getElementById("reset");
 
 function render(settings) {
   enabledEl.checked = settings.enabled;
-  contrastEl.value = settings.contrast;
-  brightnessEl.value = settings.brightness;
-  contrastValEl.textContent = settings.contrast + "%";
-  brightnessValEl.textContent = settings.brightness + "%";
+  darknessEl.value = settings.darkness;
+  darknessValEl.textContent = settings.darkness + "%";
 }
 
 chrome.storage.sync.get(DEFAULTS, render);
@@ -30,12 +26,16 @@ enabledEl.addEventListener("change", () => {
   save({ enabled: enabledEl.checked });
 });
 
-contrastEl.addEventListener("input", () => {
-  contrastValEl.textContent = contrastEl.value + "%";
-  save({ contrast: Number(contrastEl.value) });
+darknessEl.addEventListener("input", () => {
+  darknessValEl.textContent = darknessEl.value + "%";
 });
 
-brightnessEl.addEventListener("input", () => {
-  brightnessValEl.textContent = brightnessEl.value + "%";
-  save({ brightness: Number(brightnessEl.value) });
+darknessEl.addEventListener("change", () => {
+  save({ darkness: Number(darknessEl.value) });
+});
+
+resetEl.addEventListener("click", () => {
+  darknessEl.value = DEFAULTS.darkness;
+  darknessValEl.textContent = DEFAULTS.darkness + "%";
+  save({ darkness: DEFAULTS.darkness });
 });

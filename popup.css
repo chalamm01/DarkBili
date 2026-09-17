@@ -106,6 +106,28 @@ input:checked + .slider::before {
   transform: translateX(16px);
 }
 
+.reset-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 7px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #cfcfcf;
+  background: #23242a;
+  border: 1px solid #3a3b40;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background: #2a2b32;
+  color: #fff;
+}
+
+.reset-btn:active {
+  background: #1e1f24;
+}
+
 .hint {
   margin: 12px 0 0;
   font-size: 11px;

@@ -1,46 +1,33 @@
-/* DarkBili TV — smart-invert dark mode
-   Strategy: invert the whole page, then invert image/video-like content
-   back so photos, thumbnails, and the video player still look normal.
-   This works on any site (including bilibili.tv) without needing to
-   know its exact CSS class names. */
+/* DarkBili TV — real dark theme (no invert filter).
+   content.js reads each element's actual computed color and, only if it's
+   a light solid color, replaces it with a darker version of the *same
+   hue* — so logos, brand colors, and icons keep their real look instead
+   of being photo-negatived. This file just sets sane page-level defaults
+   and scrollbar colors. */
 
 html.darkbili-enabled {
-  filter: invert(1) hue-rotate(180deg)
-    contrast(var(--darkbili-contrast, 90%))
-    brightness(var(--darkbili-brightness, 100%));
-  background: #fff !important;
+  background-color: #121212 !important;
+  color-scheme: dark;
 }
 
-/* Undo the invert for anything that's already an image/video, so
-   thumbnails, avatars, and the video player render with true colors. */
-html.darkbili-enabled img,
-html.darkbili-enabled video,
-html.darkbili-enabled picture,
-html.darkbili-enabled canvas,
-html.darkbili-enabled svg,
-html.darkbili-enabled iframe,
-html.darkbili-enabled [style*="background-image"],
-html.darkbili-enabled [class*="cover"],
-html.darkbili-enabled [class*="avatar"],
-html.darkbili-enabled [class*="thumbnail"] {
-  filter: invert(1) hue-rotate(180deg);
+html.darkbili-enabled body {
+  background-color: #121212 !important;
 }
 
-/* Prevent the double-invert rule above from re-flipping *nested* text or
-   icons inside an image-classed wrapper back to the broken state. */
-html.darkbili-enabled [class*="cover"] *:not(img):not(video):not(picture),
-html.darkbili-enabled [class*="avatar"] *:not(img):not(video):not(picture),
-html.darkbili-enabled [class*="thumbnail"] *:not(img):not(video):not(picture) {
-  filter: invert(1) hue-rotate(180deg);
-}
-
-/* Keep the native video player chrome (progress bar, buttons) readable —
-   video elements themselves are un-inverted above already. */
-html.darkbili-enabled video::-webkit-media-controls-panel {
-  filter: invert(1) hue-rotate(180deg);
-}
-
-/* Dark, low-contrast scrollbars to match */
 html.darkbili-enabled {
   scrollbar-color: #4a4a4a #1a1a1a;
+}
+
+html.darkbili-enabled ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html.darkbili-enabled ::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+html.darkbili-enabled ::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a;
+  border-radius: 6px;
 }

@@ -20,18 +20,18 @@
   </div>
 
   <div class="row slider-row">
-    <label for="contrast">Contrast</label>
-    <input type="range" id="contrast" min="50" max="100" step="1" />
-    <span id="contrast-val" class="val"></span>
+    <label for="darkness">Darkness</label>
+    <input type="range" id="darkness" min="0" max="100" step="1" />
+    <span id="darkness-val" class="val"></span>
   </div>
 
-  <div class="row slider-row">
-    <label for="brightness">Brightness</label>
-    <input type="range" id="brightness" min="60" max="140" step="1" />
-    <span id="brightness-val" class="val"></span>
-  </div>
+  <button id="reset" class="reset-btn" type="button">Restore default darkness</button>
 
-  <p class="hint">Works on bilibili.tv. Reload the tab if a page loaded before you installed the extension.</p>
+  <p class="hint">
+    Recolors the page (not a color-invert filter) — logos, thumbnails, and
+    video keep their real colors. If you just installed the extension,
+    reload any open bilibili.tv tabs once.
+  </p>
 
   <script src="popup.js"></script>
 </body>
